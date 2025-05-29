@@ -39,7 +39,6 @@ public class DialogueManager : MonoBehaviour
     [TweenityEvent]
     public void RemindStepIntoPlayArea()
     {
-        Debug.Log("🔔 Recordatorio: Debes entrar en la zona de juego.");
         panelController.ShowDialogue("Por favor, entra en la zona delimitada para continuar.", "Entendido");
     }
 
@@ -64,7 +63,7 @@ public class DialogueManager : MonoBehaviour
     [TweenityEvent]
     public void ShowFailureMessage()
     {
-        ShowPanel("El fuego se salió de control. Intenta usar el extintor correcto la próxima vez.", "Continuar", ReportButtonClickA);
+        ShowPanel("Paso demasiado tiempo, el fuego se salió de control.", "Continuar", ReportButtonClickA);
     }
 
     [TweenityEvent]
@@ -91,7 +90,7 @@ public class DialogueManager : MonoBehaviour
         panelController.transform.Rotate(0, 180, 0);
 
         panelController.ShowDialogue(
-            "Has completado la simulación. ¿Qué deseas hacer a continuación?",
+            "Has completado la simulación!",
             "Reiniciar", "Modo Libre",
             () => TweenityEvents.ReportAction(gameObject.name, nameof(DialogueManager), nameof(ReportButtonClickA)),
             () => TweenityEvents.ReportAction(gameObject.name, nameof(DialogueManager), nameof(ReportButtonClickB))

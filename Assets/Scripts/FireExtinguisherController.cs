@@ -19,6 +19,16 @@ public class FireExtinguisher : MonoBehaviour
         initialRotation = transform.rotation;
     }
 
+    private void Start()
+    {
+        // Asegurar que el spray esté apagado desde el inicio
+        if (sprayEffect != null)
+            sprayEffect.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+
+        if (sprayZoneCollider != null)
+            sprayZoneCollider.enabled = false;
+    }
+
     private void OnEnable()
     {
         if (grabInteractable != null)
@@ -64,7 +74,7 @@ public class FireExtinguisher : MonoBehaviour
         Debug.Log("🔴 [FireExtinguisher] StopSpray");
 
         if (sprayEffect != null && sprayEffect.isPlaying)
-            sprayEffect.Stop();
+            sprayEffect.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
 
         if (sprayZoneCollider != null)
             sprayZoneCollider.enabled = false;
